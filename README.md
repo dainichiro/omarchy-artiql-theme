@@ -6,30 +6,36 @@ Ink-black, quiet and warm. A dark theme for [Omarchy](https://omarchy.org).
 
 ## Install
 
+Clone and link it, so the whole theme loads — including the rounded window
+corners in [`hyprland.lua`](hyprland.lua):
+
+```bash
+git clone https://github.com/dainichiro/omarchy-artiql-theme.git ~/.local/share/omarchy-themes/artiql
+ln -sT ~/.local/share/omarchy-themes/artiql ~/.config/omarchy/themes/artiql
+omarchy theme set artiql
+```
+
+Update later with `git -C ~/.local/share/omarchy-themes/artiql pull`.
+
+<details>
+<summary>Colours only</summary>
+
 ```bash
 omarchy theme install https://github.com/dainichiro/omarchy-artiql-theme
 ```
 
+Omarchy skips every `.lua` in a theme installed this way, so windows keep
+their square corners. Everything else — colours, backgrounds, unlock screen —
+is the same.
+
+</details>
+
 A light counterpart is available as
 [Artiql Light](https://github.com/dainichiro/omarchy-artiql-light-theme).
 
-### Rounded corners
+### Window corners
 
-The theme is designed with softly rounded windows. Omarchy does not load Lua
-from themes installed with `omarchy theme install`, so the bundled
-[`hyprland.lua`](hyprland.lua) is skipped. To get the intended corners, add this
-to `~/.config/hypr/looknfeel.lua`:
-
-```lua
-hl.config({
-  decoration = {
-    rounding = 8,
-    rounding_power = 3,
-  },
-})
-```
-
-A restrained radius keeps edges crisp; `rounding_power = 3` eases the straight
+`rounding = 8` keeps edges crisp; `rounding_power = 3` eases each straight
 edge into the curve instead of meeting a circular arc.
 
 ### Boot unlock screen
